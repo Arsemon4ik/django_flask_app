@@ -1,0 +1,25 @@
+{% extends "index.html" %}
+
+{% block content %}
+    <form method="post">
+        <table>
+            <tr>
+                <th>Назва роботи</th>
+                <th>Здана робота?</th>
+            </tr>
+            {% for subject in subjects %}
+                <tr>
+                    <td>{{ subject['schedule_name'] }}</td>
+                    {% if subject.is_passed %}
+                        <td><input type="checkbox" value="{{ subject['id'] }}" name="subject" checked="checked"></td>
+                    {% else %}
+                        <td><input type="checkbox" value="{{ subject['id'] }}" name="subject"></td>
+                    {% endif %}
+                </tr>
+            {% endfor %}
+        </table>
+        <div style="display: flex; justify-content: center; margin-top: 20px">
+            <button type="submit" style="text-align: center; font-size: 20px;">Оновити таблицю</button>
+        </div>
+    </form>
+{% endblock content %}

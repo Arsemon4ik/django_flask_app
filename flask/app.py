@@ -26,7 +26,12 @@ SCHEDULE = [
 STATE = set()
 
 
-def update(list):
+def update(list) -> None:
+    """ Update function takes list and toggle the value of is_passed
+    Args:
+        list: [List of checked ids]
+    Returns:
+    """
     global STATE
     if list:
         # check if values are removed from list and remain in STATE
@@ -49,12 +54,20 @@ def update(list):
 
 
 def reset():
+    """ reset function reset all the values of DB
+     Args:
+     Returns:
+     """
     for subject in SCHEDULE:
         subject['is_passed'] = False
 
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
+    """ index function is the main function which handles GET and POST requests and manage them
+     Args:
+     Returns:
+     """
     if request.method == 'POST':
         id_list = request.form.getlist('subject')
         id_list = [int(id) for id in id_list]

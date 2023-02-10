@@ -3,6 +3,14 @@ from .models import Schedule
 
 
 def schedule(request):
+    """ Schedule function for take request and send response back via html template
+    Args:
+        request: [The request parameter is a HttpRequest object]
+    Returns:
+        render: [Rendered HTML template],
+        redirect: [Redirected to the same page to reload]
+    """
+
     subjects = Schedule.objects.all()
     if request.method == "POST":
         id_list = request.POST.getlist('subject')

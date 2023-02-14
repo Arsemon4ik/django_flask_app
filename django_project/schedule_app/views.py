@@ -16,8 +16,8 @@ def schedule(request):
         id_list = request.POST.getlist('subject')
 
         subjects.update(is_passed=False)
-        for id in id_list:
-            Schedule.objects.filter(id=int(id)).update(is_passed=True)
+        for id_ in id_list:
+            Schedule.objects.filter(id=int(id_)).update(is_passed=True)
         return redirect('schedule')
     else:
         return render(request=request, template_name='schedule.html', context={'subjects': subjects})
